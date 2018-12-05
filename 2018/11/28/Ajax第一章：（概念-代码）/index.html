@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ajax web,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Ajax第一章：（概念+代码）概念：异步的JavaScript+XMLAjax-&amp;gt; 封装好了JavaScript+XML类库       JavaScript-&amp;gt; 请求发送、处理       XML-&amp;gt; 存储数据 作用：局部刷新-》登录 代码实现步骤（JSP端）：  创建XHR（XMLHTTPRequest）-&amp;gt;请求提交响应处理 1234567var xhr;   if(w">
+<meta name="keywords" content="ajax web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax第一章：（概念+代码）">
+<meta property="og:url" content="http://yoursite.com/2018/11/28/Ajax第一章：（概念-代码）/index.html">
+<meta property="og:site_name" content="MobCats&#39;s Blog">
+<meta property="og:description" content="Ajax第一章：（概念+代码）概念：异步的JavaScript+XMLAjax-&amp;gt; 封装好了JavaScript+XML类库       JavaScript-&amp;gt; 请求发送、处理       XML-&amp;gt; 存储数据 作用：局部刷新-》登录 代码实现步骤（JSP端）：  创建XHR（XMLHTTPRequest）-&amp;gt;请求提交响应处理 1234567var xhr;   if(w">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="c:/Users/15054/Documents/Tencent%20Files/1137834527/FileRecv/servlet/servlet/servlet.png">
+<meta property="og:updated_time" content="2018-12-05T12:15:21.370Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ajax第一章：（概念+代码）">
+<meta name="twitter:description" content="Ajax第一章：（概念+代码）概念：异步的JavaScript+XMLAjax-&amp;gt; 封装好了JavaScript+XML类库       JavaScript-&amp;gt; 请求发送、处理       XML-&amp;gt; 存储数据 作用：局部刷新-》登录 代码实现步骤（JSP端）：  创建XHR（XMLHTTPRequest）-&amp;gt;请求提交响应处理 1234567var xhr;   if(w">
+<meta name="twitter:image" content="c:/Users/15054/Documents/Tencent%20Files/1137834527/FileRecv/servlet/servlet/servlet.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/28/Ajax第一章：（概念-代码）/">
+
+
+
+
+
+  <title>Ajax第一章：（概念+代码） | MobCats's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MobCats's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">低等猿类</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/28/Ajax第一章：（概念-代码）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MobCats's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ajax第一章：（概念+代码）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-28T20:13:58+08:00">
+                2018-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Ajax第一章：（概念-代码）"><a href="#Ajax第一章：（概念-代码）" class="headerlink" title="Ajax第一章：（概念+代码）"></a>Ajax第一章：（概念+代码）</h3><h5 id="概念：异步的JavaScript-XML"><a href="#概念：异步的JavaScript-XML" class="headerlink" title="概念：异步的JavaScript+XML"></a>概念：异步的JavaScript+XML</h5><pre><code>Ajax-&gt; 封装好了JavaScript+XML类库
+      JavaScript-&gt; 请求发送、处理
+      XML-&gt; 存储数据
+</code></pre><p>作用：局部刷新-》登录</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p>实现步骤（JSP端）：</p>
+<ol>
+<li><p>创建XHR（<code>XMLHTTPRequest</code>）-&gt;请求提交响应处理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr;</span><br><span class="line">   <span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">   	xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span>&#123;</span><br><span class="line">   	xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Micrsoft.XMLHttp"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">   &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">	xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Micrsoft.XMLHttp"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建Ajax请求：-&gt;方法（作用、参数、返回值）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(类型，url：servlet，异步？，adminname，adminpass)</span><br></pre></td></tr></table></figure>
+<p> xhr.open(类型：GET/POST，url：servlet-&gt;图，是否为异步-&gt;true，adminname，adminpass)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"GET"</span>, <span class="string">"firstServlet?myDate="</span>+<span class="keyword">new</span> <span class="built_in">Date</span>().getTime(), <span class="literal">true</span>);  </span><br><span class="line"><span class="comment">//new Date().getTime() 实时刷新</span></span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\15054\Documents\Tencent Files\1137834527\FileRecv\servlet\servlet\servlet.png" alt="servlet"></p>
+</li>
+<li><p>发送Ajax请求：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>处理响应：</p>
+<ol>
+<li><p>请求成功<br> 触发事件-&gt;<code>onreadystatechange</code>，<code>readystate</code>改变 ，值为0-4 ，4为请求成功状态</p>
+</li>
+<li><p>响应成功</p>
+<p> 状态值-&gt;<code>status</code>-&gt; 200 响应成功状态</p>
+<pre><code>常见错误 404   即 资源访问失败
+
+错误原因 
+</code></pre><ol>
+<li><p>服务器没成功启动</p>
+<ol start="2">
+<li><p>项目没有部署到服务器</p>
+</li>
+<li><p>路径写错</p>
+</li>
+<li><p>web.xml出问题  <!--注：注意项目中个文件夹与文件的结构--></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">    		<span class="keyword">if</span>(xhr.status==<span class="number">200</span>)&#123;</span><br><span class="line">    		<span class="comment">//alert(xhr.responseText);</span></span><br><span class="line">    		<span class="comment">//var xmlObject = xhr.responseXML;</span></span><br><span class="line">   		<span class="comment">//alert(xmlObject.getElementsByTagName("name")[0].text);</span></span><br><span class="line">    		<span class="built_in">document</span>.getElementsByName(<span class="string">"age"</span>)[<span class="number">0</span>].value = xhr.responseText;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">else</span>&#123;</span><br><span class="line">    		alert(<span class="string">"获取资源失败"</span>);</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>JSP 页面获取响应值</p>
+<p><code>responseText</code>-》文本（数字、字符串）-》age获取的案例<br>   <code>responseXML</code>-》XML文档-》<code>StringBuffer</code>和<code>String</code>区别-》字符串变量+字符串常量-》返回一个zhangsan的那个案例</p>
+</li>
+</ol>
+<p>   <strong>服务器应用端</strong> </p>
+<p>   自建<code>servlet</code>（服务器上的应用程序），继承<code>HttpServlet</code>类，重写<code>doGet</code>方法</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.inspur.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> num = <span class="keyword">new</span> Random().nextInt(<span class="number">100</span>);</span><br><span class="line">		resp.setContentType(<span class="string">"text/html,charset=UTF-8"</span>);</span><br><span class="line">		PrintWriter out = resp.getWriter();</span><br><span class="line">		out.println(num);</span><br><span class="line"><span class="comment">//		StringBuffer stringBuffer = new StringBuffer();</span></span><br><span class="line"><span class="comment">//		stringBuffer.append("&lt;perosn&gt;");</span></span><br><span class="line"><span class="comment">//		stringBuffer.append("&lt;name&gt;");</span></span><br><span class="line"><span class="comment">//		stringBuffer.append("张三");</span></span><br><span class="line"><span class="comment">//		stringBuffer.append("&lt;/name&gt;");</span></span><br><span class="line"><span class="comment">//		stringBuffer.append("&lt;/perosn&gt;");</span></span><br><span class="line"><span class="comment">//		</span></span><br><span class="line"><span class="comment">//		resp.setContentType("text/xml;charset=utf-8");</span></span><br><span class="line"><span class="comment">//		PrintWriter out = resp.getWriter();</span></span><br><span class="line"><span class="comment">//		out.write(stringBuffer.toString());</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ajax-web/" rel="tag"># ajax web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/01/笔记本选购指南-2017/" rel="next" title="笔记本选购指南 2017">
+                <i class="fa fa-chevron-left"></i> 笔记本选购指南 2017
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/05/git指令合辑/" rel="prev" title="git指令合辑">
+                git指令合辑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jin</p>
+              <p class="site-description motion-element" itemprop="description">MobCats</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+		  
+		  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=33190113&auto=1&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax第一章：（概念-代码）"><span class="nav-number">1.</span> <span class="nav-text">Ajax第一章：（概念+代码）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念：异步的JavaScript-XML"><span class="nav-number">1.0.1.</span> <span class="nav-text">概念：异步的JavaScript+XML</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码"><span class="nav-number">1.0.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
