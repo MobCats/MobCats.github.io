@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="windows安装完成git后12git config --global user.name&amp;quot;XXX&amp;quot;git config --global user.email&amp;quot;XXX&amp;quot; 创建1git init //创建仓库 提交12git add &amp;lt;file&amp;gt; //将工作区文件提交到暂存区,&amp;lt;file&amp;gt;为文件名（包含扩展名)git commit">
+<meta name="description" content="windows安装完成git后12git config --global user.name&quot;XXX&quot;git config --global user.email&quot;XXX&quot; 创建1git init //创建仓库 提交12git add &amp;lt;file&amp;gt; //将工作区文件提交到暂存区,&amp;lt;file&amp;gt;为文件名（包含扩展名)git commit -m &amp;lt;message&amp;gt; /">
 <meta name="keywords" content="git github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git指令合辑">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/git指令合辑/index.html">
 <meta property="og:site_name" content="MobCats&#39;s Blog">
-<meta property="og:description" content="windows安装完成git后12git config --global user.name&amp;quot;XXX&amp;quot;git config --global user.email&amp;quot;XXX&amp;quot; 创建1git init //创建仓库 提交12git add &amp;lt;file&amp;gt; //将工作区文件提交到暂存区,&amp;lt;file&amp;gt;为文件名（包含扩展名)git commit">
+<meta property="og:description" content="windows安装完成git后12git config --global user.name&quot;XXX&quot;git config --global user.email&quot;XXX&quot; 创建1git init //创建仓库 提交12git add &amp;lt;file&amp;gt; //将工作区文件提交到暂存区,&amp;lt;file&amp;gt;为文件名（包含扩展名)git commit -m &amp;lt;message&amp;gt; /">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-12-05T12:11:24.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git指令合辑">
-<meta name="twitter:description" content="windows安装完成git后12git config --global user.name&amp;quot;XXX&amp;quot;git config --global user.email&amp;quot;XXX&amp;quot; 创建1git init //创建仓库 提交12git add &amp;lt;file&amp;gt; //将工作区文件提交到暂存区,&amp;lt;file&amp;gt;为文件名（包含扩展名)git commit">
+<meta name="twitter:description" content="windows安装完成git后12git config --global user.name&quot;XXX&quot;git config --global user.email&quot;XXX&quot; 创建1git init //创建仓库 提交12git add &amp;lt;file&amp;gt; //将工作区文件提交到暂存区,&amp;lt;file&amp;gt;为文件名（包含扩展名)git commit -m &amp;lt;message&amp;gt; /">
 
 
 
@@ -300,14 +300,14 @@
       
 
       
-        <p>windows安装完成git后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name&quot;XXX&quot;</span><br><span class="line">git config --global user.email&quot;XXX&quot;</span><br></pre></td></tr></table></figure></p>
-<p>创建<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init //创建仓库</span><br></pre></td></tr></table></figure></p>
-<p>提交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file&gt; //将工作区文件提交到暂存区,&lt;file&gt;为文件名（包含扩展名)</span><br><span class="line">git commit -m &lt;message&gt; //将暂存区文件提交到版本库&lt;message&gt;为提交备注,例如&quot;add js&quot;</span><br></pre></td></tr></table></figure></p>
-<p>查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git status //查看仓库状态,文件有无被修改过</span><br><span class="line">git diff &lt;file&gt; //查看工作区文件与最后一次添加到暂存区的文件差别</span><br><span class="line">git diff --cached //暂存区与版本库（分支）差别</span><br><span class="line">git diff HEAD //工作区与版本库差别</span><br><span class="line">git log //查看当前版本库中的提交记录</span><br><span class="line">git relog //查看版本库中的所有提交记录，包括已经回溯的</span><br><span class="line">git log --protty=oneline //仅显示 commit id 与 message</span><br></pre></td></tr></table></figure></p>
-<p>回溯<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^ //返回上提交的版本 HEAD 指向的当前版本 HEAD^ 上个版本 HEAD^^ 上上个</span><br><span class="line">git reset --hard commit_id //根据 commit_id 进行版本回溯</span><br></pre></td></tr></table></figure></p>
-<p>丢弃修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout --&lt;file&gt; //丢弃工作区修改，使其与版本库中的最新版本保持一致,</span><br><span class="line">//若之前暂存区中存在未提交的版本，则与暂存区中版本一致</span><br><span class="line">git reset HEAD &lt;file&gt; //丢弃暂存区内容</span><br></pre></td></tr></table></figure></p>
-<p>删除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm &lt;file&gt; //在版本库中删除该文件</span><br></pre></td></tr></table></figure></p>
-<p>上传远程库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:michaelliao/learngit.git </span><br><span class="line">//michaelliao 为 GitHub 用户名，learngit 为 GitHub 上的仓库名</span><br><span class="line">//此为管理远程库</span><br><span class="line">git push -u origin master</span><br><span class="line">//将本地库的所有内容推送到远程库上</span><br></pre></td></tr></table></figure></p>
+        <p>windows安装完成git后<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name<span class="string">"XXX"</span></span><br><span class="line">git<span class="built_in"> config </span>--global user.email<span class="string">"XXX"</span></span><br></pre></td></tr></table></figure></p>
+<p>创建<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">init</span> <span class="comment">//创建仓库</span></span><br></pre></td></tr></table></figure></p>
+<p>提交<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">add</span> <span class="symbol">&lt;file&gt;</span> //将工作区文件提交到暂存区,<span class="symbol">&lt;file&gt;</span>为文件名（包含扩展名)</span><br><span class="line">git commit -<span class="keyword">m</span> <span class="symbol">&lt;message&gt;</span> //将暂存区文件提交到版本库<span class="symbol">&lt;message&gt;</span>为提交备注,例如<span class="string">"add js"</span></span><br></pre></td></tr></table></figure></p>
+<p>查看<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git status <span class="comment">//查看仓库状态,文件有无被修改过</span></span><br><span class="line">git diff &lt;<span class="keyword">file</span>&gt; <span class="comment">//查看工作区文件与最后一次添加到暂存区的文件差别</span></span><br><span class="line">git diff --cached <span class="comment">//暂存区与版本库（分支）差别</span></span><br><span class="line">git diff HEAD <span class="comment">//工作区与版本库差别</span></span><br><span class="line">git <span class="built-in">log</span> <span class="comment">//查看当前版本库中的提交记录</span></span><br><span class="line">git relog <span class="comment">//查看版本库中的所有提交记录，包括已经回溯的</span></span><br><span class="line">git <span class="built-in">log</span> --protty=oneline <span class="comment">//仅显示 commit id 与 message</span></span><br></pre></td></tr></table></figure></p>
+<p>回溯<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset <span class="params">--hard</span> HEAD^ <span class="string">//</span>返回上提交的版本 HEAD 指向的当前版本 HEAD^ 上个版本 HEAD^^ 上上个</span><br><span class="line">git reset <span class="params">--hard</span> commit_id <span class="string">//</span>根据 commit_id 进行版本回溯</span><br></pre></td></tr></table></figure></p>
+<p>丢弃修改<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout --&lt;<span class="keyword">file</span>&gt; <span class="comment">//丢弃工作区修改，使其与版本库中的最新版本保持一致,</span></span><br><span class="line"><span class="comment">//若之前暂存区中存在未提交的版本，则与暂存区中版本一致</span></span><br><span class="line">git reset HEAD &lt;<span class="keyword">file</span>&gt; <span class="comment">//丢弃暂存区内容</span></span><br></pre></td></tr></table></figure></p>
+<p>删除<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">rm</span> &lt;<span class="keyword">file</span>&gt; <span class="comment">//在版本库中删除该文件</span></span><br></pre></td></tr></table></figure></p>
+<p>上传远程库<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github<span class="selector-class">.com</span>:michaelliao/learngit<span class="selector-class">.git</span> </span><br><span class="line"><span class="comment">//michaelliao 为 GitHub 用户名，learngit 为 GitHub 上的仓库名</span></span><br><span class="line"><span class="comment">//此为管理远程库</span></span><br><span class="line">git push -u origin master</span><br><span class="line"><span class="comment">//将本地库的所有内容推送到远程库上</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -347,6 +347,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/04/笔记-小狗钱钱/" rel="prev" title="小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！">
+                小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！ <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -419,7 +423,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -432,7 +436,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
