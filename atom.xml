@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>MobCat&#39;s Blog</title>
+  
+  <subtitle>低等猿类</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-03-17T12:23:01.252Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>MobCat</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>回顾（重学）计算机网络TCP篇——三次握手四次挥手</title>
+    <link href="http://yoursite.com/2019/03/14/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
+    <id>http://yoursite.com/2019/03/14/三次握手四次挥手/</id>
+    <published>2019-03-14T09:42:48.000Z</published>
+    <updated>2019-03-17T12:23:01.252Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>渐渐临近实习，发现自己大二时学的计算机的基础课已遗忘大半（估计那时候就没学好），故有此计划。</p></blockquote><p>TCP(Transmission Control Protocol)传输控制协议<br>SYN(synchronous建立联机)<br>ACK(acknowledgement 确认)<br>PSH(push传送)<br>FIN(finish结束)<br>RST(reset重置)<br>URG(urgent紧急)<br>Sequence number(顺序号码)<br>Acknowledge number(确认号码)</p><h2 id="三次握手四次挥手"><a href="#三次握手四次挥手" class="headerlink" title="三次握手四次挥手"></a>三次握手四次挥手</h2><p>三次握手四次挥手是指 TCP 协议下的客户端与服务器端的建立连接与断开连接时的接法过程。</p><p><img src="http://hi.csdn.net/attachment/201108/7/0_131271823564Rx.gif" alt=""></p><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p>所谓三次握手(Three-way Handshake)，是指建立一个 TCP 连接时，需要客户端和服务器总共发送3个包。<br>三次握手的目的是连接服务器指定端口，建立 TCP 连接，并同步连接双方的序列号和确认号，交换 TCP 窗口大小信息。</p><ul><li><p>第一次握手(SYN=1, seq=x):<br>客户端发送一个 TCP 的 SYN 标志位置1的包，指明客户端打算连接的服务器的端口，以及初始序号 X,保存在包头的序列号(Sequence Number)字段里。</p></li><li><p>第二次握手(SYN=1, ACK=1, seq=y, ACKnum=x+1):<br>服务器发回确认包(ACK)应答。即 SYN 标志位和 ACK 标志位均为1。服务器端选择自己 ISN 序列号，放到 Seq 域里，同时将确认序号(Acknowledgement Number)设置为客户的 ISN 加1，即X+1。</p></li><li><p>第三次握手(ACK=1，ACKnum=y+1):<br>客户端再次发送确认包(ACK)，SYN 标志位为0，ACK 标志位为1，并且把服务器发来 ACK 的序号字段+1，放在确定字段中发送给对方，并且在数据段放写ISN的+1发送完毕后，客户端进入 <code>ESTABLISHED</code> 状态，当服务器端接收到这个包时，也进入 <code>ESTABLISHED</code> 状态，TCP 握手结束。</p></li></ul><h5 id="为什么是三次握手"><a href="#为什么是三次握手" class="headerlink" title="为什么是三次握手"></a>为什么是三次握手</h5><p>握手是为了建立客户端与服务器端的连接，需要保证客户端与服务器都具有完整的接收和发送能力</p><ul><li>第一次握手，客户端向服务器发送网络包，服务器收到了。结论：客户端的发送能力正常，服务器端接收能力正常。</li><li>第二次握手，服务器发包，客户端接收到。结论：客户端的接收、发送能力正常，服务器端接收发送能力正常。从客户端角度来讲，服务器能对发送的包做出反应，说明其接收、发送能力正常，但从服务器角度来讲：客户端只是发送了网络包，证明发送能力正常，但是对于其是否具有正常的接收能力还是未知。</li><li>第三次握手，客户端发包，服务器接收到。结论：在服务器视角上，证明了客户端拥有正常的接收和发送能力。</li></ul><h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p>TCP 的连接的拆除需要发送四个包，因此称为四次挥手(Four-way handshake)，也叫做改进的三次握手。客户端或服务器均可主动发起挥手动作。</p><ul><li><p>第一次握手(SYN=1, seq=x):<br>假设客户端想要关闭连接，客户端发送一个 FIN 标志位置为1的包，表示自己已经没有数据可以发送了，但是仍然可以接受数据。</p></li><li><p>第二次挥手(ACK=1，ACKnum=x+1)<br>服务器端确认客户端的 FIN 包，发送一个确认包，表明自己接受到了客户端关闭连接的请求，但还没有准备好关闭连接。</p></li><li><p>第三次挥手(FIN=1，seq=y)</p><p>服务器端准备好关闭连接时，向客户端发送结束连接请求，FIN 置为1。<br>发送完毕后，服务器端进入 <code>LAST_ACK</code> 状态，等待来自客户端的最后一个ACK。</p></li><li><p>第四次挥手(ACK=1，ACKnum=y+1)</p><p>客户端接收到来自服务器端的关闭请求，发送一个确认包，并进入 <code>TIME_WAIT</code>状态，等待可能出现的要求传的 ACK 包。<br>服务器端接收到这个确认包之后，关闭连接，进入 <code>CLOSED</code> 状态。<br>客户端等待了某个固定时间（两个最大段生命周期，2MSL，2 Maximum Segment Lifetime）之后，没有收到服务器端的 ACK ，认为服务器端已经正常关闭连接，于是自己也关闭连接，进入 <code>CLOSED</code> 状态。</p></li></ul><blockquote><p>本文参考</p><p>笔试面试知识整理 <a href="https://hit-alibaba.github.io/interview/basic/network/TCP.html" target="_blank" rel="noopener">https://hit-alibaba.github.io/interview/basic/network/TCP.html</a></p><p>“三次握手，四次挥手”你真的懂吗？<a href="https://zhuanlan.zhihu.com/p/53374516" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53374516</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;渐渐临近实习，发现自己大二时学的计算机的基础课已遗忘大半（估计那时候就没学好），故有此计划。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;TCP(Transmission Control Protocol)传输控制协议&lt;br&gt;SYN(synchron
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="计算机网络 面试" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！</title>
+    <link href="http://yoursite.com/2019/03/04/%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%8B%97%E9%92%B1%E9%92%B1/"/>
+    <id>http://yoursite.com/2019/03/04/笔记-小狗钱钱/</id>
+    <published>2019-03-04T12:17:26.000Z</published>
+    <updated>2019-03-17T12:22:53.550Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！"><a href="#小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！" class="headerlink" title="小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！"></a>小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！</h2><blockquote><p>这本书的确面向儿童，但即将步入社会的我，在财务管理方面，和儿童貌似没区别（才不是说花呗白条还不起。。。</p></blockquote><h4 id="不想工作？"><a href="#不想工作？" class="headerlink" title="不想工作？"></a>不想工作？</h4><p>大多数人都认为工作肯定是一件艰苦而令人不愉快的事情，其实只有做自己喜欢的事情的人，才能真正获得成功。（突破传统的思维限制，把自己喜欢的擅长的事物发展成自己的工作）</p><h4 id="提升执行力（三种方式）"><a href="#提升执行力（三种方式）" class="headerlink" title="提升执行力（三种方式）"></a>提升执行力（三种方式）</h4><ol><li><p>拿一本相册作为你的梦想相册。收集一些与自己的愿望有关的照片，把它们贴在相册里。我们要通过图片来思考。</p></li><li><p>每天看几遍相册，然后想象着，（完成愿望的情景）你已经在美国了，已经在美国了。已经拥有笔记本电脑了，还要想象你替爸爸还清债务后自豪的神情。（引入学习、想象力概念）</p><blockquote><p>学习就是认识新观念和新想法的过程。假如人们始终以同一种思维方式来考虑问题的话，那么始终只会得到相同的结果。</p><p>没有想象力的人是很难成就大事的。我们对一件事投入的经历越多，成功的可能性也越大。可是大多数人把精力放在自己并不喜欢的事情上，而不去想自己希望得到的东西。</p></blockquote></li><li><p>准备一个梦想储蓄罐，随便拿一个罐子，然后在这个罐子上写上你得梦想，把它作为你的储蓄罐。但是你要为自己的每一个梦想准备一个储蓄罐。一旦储蓄罐准备好，你就应当把剩下的每一份钱放进去。</p></li></ol><p>最“简单”的执行力：当你决定做一件事情的时候，你必须在72小时之内完成，否则你很可能永远不会再做了。</p><h4 id="树立自信心-成功日记"><a href="#树立自信心-成功日记" class="headerlink" title="树立自信心 成功日记"></a>树立自信心 成功日记</h4><p>准备一个小本子，给它取名叫“成功日记”，然后把所有做成功的事情记录进去。你最好每天都做这件事，每次都写写至少5条你的个人成果，任何小事都可以。开始的时候也许你觉得不容易，可能会问自己，这件或那件事情是否真的可以算作成果。在这种情况下，你的回答应该是肯定的。过于自信比有够自信要好得多。</p><h4 id="关于工作-表哥的建议"><a href="#关于工作-表哥的建议" class="headerlink" title="关于工作 表哥的建议"></a>关于工作 表哥的建议</h4><ol><li>无论在什么时候都不能把希望只寄托在一份工作上，它持续的时间不会像你设想的那么长，所以你要立即寻找另一份代替的工作。</li><li>你肯定会遇到一些困难。</li></ol><h4 id="如何处理债务的四个忠告"><a href="#如何处理债务的四个忠告" class="headerlink" title="如何处理债务的四个忠告"></a>如何处理债务的四个忠告</h4><ol><li>欠债的人应当毁掉所以信用卡。因为大多数人在使用信用卡的时候，会比使用现金时花的要多得多。</li><li>应当尽可能少地偿还贷款，分期贷款额越高，每个月剩下的生活费就越少。最终会出现用新的贷款来偿还旧的贷款的现象。</li><li>将扣除生活费后剩下的钱一半存起来，剩下的一半用于支付消费贷款。最好根本不申请消费贷款。</li><li>债务人都应该在自己钱包里贴一张纸条，上面写着“真的有必要吗”。</li></ol><h4 id="养“鹅”下金蛋-用钱生钱"><a href="#养“鹅”下金蛋-用钱生钱" class="headerlink" title="养“鹅”下金蛋 用钱生钱"></a>养“鹅”下金蛋 用钱生钱</h4><p>收入的一半存起来，40%应急，10%零花（比例按照自身收入状况改变）。用存起来中的一部分，进行投资。</p><h4 id="投资"><a href="#投资" class="headerlink" title="投资"></a>投资</h4><ol><li><p>应该把钱投资在安全的地方。</p></li><li><p>我的钱应该下很多“金蛋”。</p></li><li><p>我们的投资应该简单明了，而且易于操作</p><p><strong>基金</strong></p></li></ol><h4 id="股票"><a href="#股票" class="headerlink" title="股票"></a>股票</h4><h4 id="72公式"><a href="#72公式" class="headerlink" title="72公式"></a>72公式</h4><h4 id="风险与低价买入"><a href="#风险与低价买入" class="headerlink" title="风险与低价买入"></a>风险与低价买入</h4><blockquote><p>本文写自2018年12月30日，两天读完《小狗钱钱》后作，笔记整理并不完整，近期重读，补全笔记，并尝试开始尝试其中方法，改善自己的经济状况。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！&quot;&gt;&lt;a href=&quot;#小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！&quot; class=&quot;headerlink&quot; title=&quot;小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！&quot;&gt;&lt;/a&gt;小狗钱钱读
+      
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="理财" scheme="http://yoursite.com/tags/%E7%90%86%E8%B4%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git指令合辑</title>
+    <link href="http://yoursite.com/2018/12/05/git%E6%8C%87%E4%BB%A4%E5%90%88%E8%BE%91/"/>
+    <id>http://yoursite.com/2018/12/05/git指令合辑/</id>
+    <published>2018-12-05T12:10:20.000Z</published>
+    <updated>2019-03-17T12:22:01.916Z</updated>
+    
+    <content type="html"><![CDATA[<p>windows安装完成git后<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name<span class="string">"XXX"</span></span><br><span class="line">git<span class="built_in"> config </span>--global user.email<span class="string">"XXX"</span></span><br></pre></td></tr></table></figure></p><p>创建<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">init</span> <span class="comment">//创建仓库</span></span><br></pre></td></tr></table></figure></p><p>提交<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">add</span> <span class="symbol">&lt;file&gt;</span> //将工作区文件提交到暂存区,<span class="symbol">&lt;file&gt;</span>为文件名（包含扩展名)</span><br><span class="line">git commit -<span class="keyword">m</span> <span class="symbol">&lt;message&gt;</span> //将暂存区文件提交到版本库<span class="symbol">&lt;message&gt;</span>为提交备注,例如<span class="string">"add js"</span></span><br></pre></td></tr></table></figure></p><p>查看<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git status <span class="comment">//查看仓库状态,文件有无被修改过</span></span><br><span class="line">git diff &lt;<span class="keyword">file</span>&gt; <span class="comment">//查看工作区文件与最后一次添加到暂存区的文件差别</span></span><br><span class="line">git diff --cached <span class="comment">//暂存区与版本库（分支）差别</span></span><br><span class="line">git diff HEAD <span class="comment">//工作区与版本库差别</span></span><br><span class="line">git <span class="built-in">log</span> <span class="comment">//查看当前版本库中的提交记录</span></span><br><span class="line">git relog <span class="comment">//查看版本库中的所有提交记录，包括已经回溯的</span></span><br><span class="line">git <span class="built-in">log</span> --protty=oneline <span class="comment">//仅显示 commit id 与 message</span></span><br></pre></td></tr></table></figure></p><p>回溯<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset <span class="params">--hard</span> HEAD^ <span class="string">//</span>返回上提交的版本 HEAD 指向的当前版本 HEAD^ 上个版本 HEAD^^ 上上个</span><br><span class="line">git reset <span class="params">--hard</span> commit_id <span class="string">//</span>根据 commit_id 进行版本回溯</span><br></pre></td></tr></table></figure></p><p>丢弃修改<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout --&lt;<span class="keyword">file</span>&gt; <span class="comment">//丢弃工作区修改，使其与版本库中的最新版本保持一致,</span></span><br><span class="line"><span class="comment">//若之前暂存区中存在未提交的版本，则与暂存区中版本一致</span></span><br><span class="line">git reset HEAD &lt;<span class="keyword">file</span>&gt; <span class="comment">//丢弃暂存区内容</span></span><br></pre></td></tr></table></figure></p><p>删除<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">rm</span> &lt;<span class="keyword">file</span>&gt; <span class="comment">//在版本库中删除该文件</span></span><br></pre></td></tr></table></figure></p><p>上传远程库<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github<span class="selector-class">.com</span>:michaelliao/learngit<span class="selector-class">.git</span> </span><br><span class="line"><span class="comment">//michaelliao 为 GitHub 用户名，learngit 为 GitHub 上的仓库名</span></span><br><span class="line"><span class="comment">//此为管理远程库</span></span><br><span class="line">git push -u origin master</span><br><span class="line"><span class="comment">//将本地库的所有内容推送到远程库上</span></span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;windows安装完成git后&lt;br&gt;&lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ajax(概念+代码)</title>
+    <link href="http://yoursite.com/2018/11/28/Ajax%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%EF%BC%88%E6%A6%82%E5%BF%B5-%E4%BB%A3%E7%A0%81%EF%BC%89/"/>
+    <id>http://yoursite.com/2018/11/28/Ajax第一章：（概念-代码）/</id>
+    <published>2018-11-28T12:13:58.000Z</published>
+    <updated>2019-03-17T12:21:42.750Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Ajax-概念-代码"><a href="#Ajax-概念-代码" class="headerlink" title="Ajax(概念+代码)"></a>Ajax(概念+代码)</h3><h5 id="概念：异步的JavaScript-XML"><a href="#概念：异步的JavaScript-XML" class="headerlink" title="概念：异步的JavaScript+XML"></a>概念：异步的JavaScript+XML</h5><pre><code>Ajax-&gt; 封装好了JavaScript+XML类库      JavaScript-&gt; 请求发送、处理      XML-&gt; 存储数据</code></pre><p>作用：局部刷新-》登录</p><h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p>实现步骤（JSP端）：</p><ol><li><p>创建XHR（<code>XMLHTTPRequest</code>）-&gt;请求提交响应处理</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr;</span><br><span class="line">   <span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">   xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span>&#123;</span><br><span class="line">   xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Micrsoft.XMLHttp"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>或</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">   &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Micrsoft.XMLHttp"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><ol start="2"><li>创建Ajax请求：-&gt;方法（作用、参数、返回值）</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(类型，url：servlet，异步？，adminname，adminpass)</span><br></pre></td></tr></table></figure><p> xhr.open(类型：GET/POST，url：servlet-&gt;图，是否为异步-&gt;true，adminname，adminpass)</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"GET"</span>, <span class="string">"firstServlet?myDate="</span>+<span class="keyword">new</span> <span class="built_in">Date</span>().getTime(), <span class="literal">true</span>);  </span><br><span class="line"><span class="comment">//new Date().getTime() 实时刷新</span></span><br></pre></td></tr></table></figure><p><img src="C:\Users\15054\Documents\Tencent Files\1137834527\FileRecv\servlet\servlet\servlet.png" alt="servlet"></p></li><li><p>发送Ajax请求：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure></li><li><p>处理响应：</p><ol><li><p>请求成功<br> 触发事件-&gt;<code>onreadystatechange</code>，<code>readystate</code>改变 ，值为0-4 ，4为请求成功状态</p></li><li><p>响应成功</p><p> 状态值-&gt;<code>status</code>-&gt; 200 响应成功状态</p><pre><code>常见错误 404   即 资源访问失败错误原因 </code></pre><ol><li><p>服务器没成功启动</p><ol start="2"><li><p>项目没有部署到服务器</p></li><li><p>路径写错</p></li><li><p>web.xml出问题  <!--注：注意项目中个文件夹与文件的结构--></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.status==<span class="number">200</span>)&#123;</span><br><span class="line">    <span class="comment">//alert(xhr.responseText);</span></span><br><span class="line">    <span class="comment">//var xmlObject = xhr.responseXML;</span></span><br><span class="line">   <span class="comment">//alert(xmlObject.getElementsByTagName("name")[0].text);</span></span><br><span class="line">    <span class="built_in">document</span>.getElementsByName(<span class="string">"age"</span>)[<span class="number">0</span>].value = xhr.responseText;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">    alert(<span class="string">"获取资源失败"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li></ol></li></ol></li></ol></li><li><p>JSP 页面获取响应值</p><p><code>responseText</code>-》文本（数字、字符串）-》age获取的案例<br>   <code>responseXML</code>-》XML文档-》<code>StringBuffer</code>和<code>String</code>区别-》字符串变量+字符串常量-》返回一个zhangsan的那个案例</p></li></ol><p>   <strong>服务器应用端</strong> </p><p>   自建<code>servlet</code>（服务器上的应用程序），继承<code>HttpServlet</code>类，重写<code>doGet</code>方法</p>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.inspur.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function"><span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"><span class="keyword">int</span> num = <span class="keyword">new</span> Random().nextInt(<span class="number">100</span>);</span><br><span class="line">resp.setContentType(<span class="string">"text/html,charset=UTF-8"</span>);</span><br><span class="line">PrintWriter out = resp.getWriter();</span><br><span class="line">out.println(num);</span><br><span class="line"><span class="comment">//StringBuffer stringBuffer = new StringBuffer();</span></span><br><span class="line"><span class="comment">//stringBuffer.append("&lt;perosn&gt;");</span></span><br><span class="line"><span class="comment">//stringBuffer.append("&lt;name&gt;");</span></span><br><span class="line"><span class="comment">//stringBuffer.append("张三");</span></span><br><span class="line"><span class="comment">//stringBuffer.append("&lt;/name&gt;");</span></span><br><span class="line"><span class="comment">//stringBuffer.append("&lt;/perosn&gt;");</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//resp.setContentType("text/xml;charset=utf-8");</span></span><br><span class="line"><span class="comment">//PrintWriter out = resp.getWriter();</span></span><br><span class="line"><span class="comment">//out.write(stringBuffer.toString());</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Ajax-概念-代码&quot;&gt;&lt;a href=&quot;#Ajax-概念-代码&quot; class=&quot;headerlink&quot; title=&quot;Ajax(概念+代码)&quot;&gt;&lt;/a&gt;Ajax(概念+代码)&lt;/h3&gt;&lt;h5 id=&quot;概念：异步的JavaScript-XML&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="ajax,web" scheme="http://yoursite.com/tags/ajax-web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>笔记本选购指南 2017</title>
+    <link href="http://yoursite.com/2017/10/01/%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97-2017/"/>
+    <id>http://yoursite.com/2017/10/01/笔记本选购指南-2017/</id>
+    <published>2017-10-01T12:17:58.000Z</published>
+    <updated>2019-03-17T12:22:31.381Z</updated>
+    
+    <content type="html"><![CDATA[<p>你是不是还在为错综复杂的电脑参数而发愁？</p><p>你是不是还在被专有名词搞的一脸懵逼？</p><p>你是不是还在因身为小白而被电脑城奸商坑的血本无归？</p><p>烦恼？忧愁？悔恨？</p><p>那就快来看看我们的二月影社的特别推送 XXXXX</p><p>（本篇文面向没有任何电脑配置及选购基础的纯正小白白，语言较为通俗且不严谨，并内容较为简单基础，请各位高鸟、大神们轻喷，并期待我们下一篇选购篇）</p><h4 id="一、笔记本的身体（笔记本的硬件组成）"><a href="#一、笔记本的身体（笔记本的硬件组成）" class="headerlink" title="一、笔记本的身体（笔记本的硬件组成）"></a>一、笔记本的身体（笔记本的硬件组成）</h4><p>电脑主机硬件组成通常分为 cpu、显卡、内存、硬盘、电源、机箱还有散热这几个部分，对于笔记本来讲机箱和电源是不用去考虑的（笔记本哪来的机箱，电源都是模具出厂时设定的，消费者无法人为控制）</p><p>下面我就分开来简单讲讲笔记本各方面的硬件作用</p><p>Cpu：笔记本的控制和运算核心，是笔记本的大脑。目前市面上主流的cpu主要由intel（英特尔）与AMD提供，其中intel 的cpu在移动端（也就是笔记本上）相较与AMD有绝对压倒性的优势，无论是从性能还是性价比上。所以，大家在购买笔记本上一定不要购买贴着AMD小红标的产品。唉？这个好像是第二篇选购篇的内容，但是现在提一下，因为很重要，不要买小红标，就能避免很多坑了。简单讲一下Intel的CPU型号命名</p><p>i5 8250U</p><p>i5 是cpu的产品系列，这里是指的intel酷睿i5，8 是产品代数，这里是指第八代处理器，250 就是CPU的型号了。最后这个U是指的这个CPU是低压版本。除了U以外，常见的后缀还有HQ，意思是四核标压，如果没有后缀呢，那这颗cpu就为台式机的cpu。</p><p>关于核心与线程呢，这里简单介绍一下，核心是指的物理核心，就是CPU内本身的小的处理芯片，线程的话，打个比方，CPU是一个工厂，一个一个核心是一个一个厂房，那样单线程就相当于工人有两只胳膊，双线程就是指工人们多张出来两只胳膊，变成四只胳膊，这样工人们工作时的效率就能高了。</p><p>在这里，我想提醒一下大家，这是很多小白的误区，很多小白认为i7一定比i5厉害，i3就很弱了，实则不然，在讨论cpu强弱的时候，要结合cpu的具体型号来讨论。就比如，i7 7700u 与 i5 8500hq 比，一款7代低压u和一款八代标压u，这i5可比这个i7强了不止一点半点。</p><p>显卡：显卡分为集显和独显两大类。集显就是指在cpu是集成的显卡。独显就是指一个独立的图像处理模块。如果没有游戏需求，M150，这类的低端独立显卡就可以满足学生级渲染需求，假如没有影像渲染的需求，完全可以不用独显。假如有游戏需求，就要考虑GTX1050及GTX1050ti 以上的显卡了。</p><p>内存：临时存储计算机运算时产生的各种数据的模块。</p><p>硬盘：分固态硬盘和机械硬盘两大类。固态速度更快，但是贵，容量也相对较小。</p><h4 id="二、笔记本的灵魂（笔记本的系统）"><a href="#二、笔记本的灵魂（笔记本的系统）" class="headerlink" title="二、笔记本的灵魂（笔记本的系统）"></a>二、笔记本的灵魂（笔记本的系统）</h4><p>目前个人电脑的系统主要有三种：Windows、mac os、Linux。</p><p>由于一般使用Linux系统的都是各种极客大神，所以在此我先不表。</p><p>Mac os，macOS是苹果为自家旗下电脑开发的系统。嗯，买了苹果家的笔记本就好好用macOS，虽然有很多操作反人类，不要想着装Windows，macOS对于mac硬件和软件的优化是非常强大的。</p><p>Windows，微软旗下的操作系统。目前市面上所占分最大的操作系统。现在还有人讲win7比win10好？老老实实装win10吧，一个正版win10会为你少带来很多麻烦，像平时电脑蓝屏、软件打不开等等一些小毛病，基本上系统的原因。所以能装正版win10就不要考虑其他系统。</p><p>以上内容简单介绍笔记本的硬件、软件构成。在下一篇文章中，我将为大家介绍 笔记本购买时的注意事项及要去哪买笔记本 ，请大家敬请期待。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;你是不是还在为错综复杂的电脑参数而发愁？&lt;/p&gt;
+&lt;p&gt;你是不是还在被专有名词搞的一脸懵逼？&lt;/p&gt;
+&lt;p&gt;你是不是还在因身为小白而被电脑城奸商坑的血本无归？&lt;/p&gt;
+&lt;p&gt;烦恼？忧愁？悔恨？&lt;/p&gt;
+&lt;p&gt;那就快来看看我们的二月影社的特别推送 XXXXX&lt;/p&gt;
+&lt;p&gt;（
+      
+    
+    </summary>
+    
+      <category term="文案" scheme="http://yoursite.com/categories/%E6%96%87%E6%A1%88/"/>
+    
+    
+      <category term="笔记本,硬件" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0%E6%9C%AC-%E7%A1%AC%E4%BB%B6/"/>
+    
+  </entry>
+  
+</feed>
