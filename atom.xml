@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-17T12:23:01.252Z</updated>
+  <updated>2019-03-22T15:07:39.680Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>猫，游戏和八阿哥</title>
+    <link href="http://yoursite.com/2019/03/22/%E7%8C%AB%EF%BC%8C%E6%B8%B8%E6%88%8F%EF%BC%8C%E5%85%AB%E9%98%BF%E5%93%A5/"/>
+    <id>http://yoursite.com/2019/03/22/猫，游戏，八阿哥/</id>
+    <published>2019-03-22T12:16:39.000Z</published>
+    <updated>2019-03-22T15:07:39.680Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇博文永远记录平时遇到一些不值得细说的bug，有点思路但不成熟的小想法，还有游戏上的一些趣闻，偏私人、日常向，请各位访客老爷酌情观看，就酱。</p><blockquote><p>前排安利，本篇博文的名字来源于netflix于3月15日上映的动画短篇集 《 love，death and robots 》，中文译名为 《爱，死亡和机器人》，豆瓣评分9.3（话说昨天还9.4），豆瓣简介 这部名为《爱，死亡和机器人》的动画短片合集由18部分组成，每部分时长5-15分钟。这些短片涵盖多种类型，包括科幻、奇幻、恐怖和喜剧；这些短片也将包含多种形式，包括传统2D和3DCGI短片。建议观看年龄为18+。 总之，好看就对了。</p></blockquote><h1 id="3-16-—-3-22"><a href="#3-16-—-3-22" class="headerlink" title="3.16 — 3.22"></a>3.16 — 3.22</h1><h2 id="奇怪的-sidebar"><a href="#奇怪的-sidebar" class="headerlink" title="奇怪的 sidebar"></a>奇怪的 sidebar</h2><p>八阿哥：hexo next主题，侧边栏添加几个元素后，侧边栏不能进行高度<br>自适应，而是变为滚轮滚动的滚动条状态。懒，不想改动主题框架。网上寻找类似问题，无果。查阅官方文档，无果。</p><p>解决：重装了最新的 next 主题。<br>可能是当初改主题样式的时候没好好看注释，不小心改了些啥，也可能是在第三方站点下载时，下载下来的主题本身就有问题。另外，官方文档果然时最靠谱的，很难找到解决方法的问题，一定要去读官方文档，仔细分析比对。</p><h2 id="Live2d-改不了模型"><a href="#Live2d-改不了模型" class="headerlink" title="Live2d 改不了模型"></a>Live2d 改不了模型</h2><p>八阿哥：Live2d 安装完插件配置完后，改不了模型， <code>npm install --save live2d-widget-model-koharu</code> 重新导入，配置文件<code>model.use</code> 键入包名 (<code>live2d-widget-model-koharu</code>)，手动导入mode文件，都没效果。而且在配置文件中更改看板娘的宽高，也没效果。</p><p>解决：Live2d的配置代码写在了deploy里面</p><p><img src="https://pic.superbed.cn/item/5c94f8dc3a213b0417e5b56a" alt="错误"></p><p>拿出来就好了。。。</p><p><img src="https://pic.superbed.cn/item/5c94f8983a213b0417e5b2ed" alt="正确"></p><p>[]: <a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">https://github.com/EYHN/hexo-helper-live2d</a>    “live2d Github链接”</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本篇博文永远记录平时遇到一些不值得细说的bug，有点思路但不成熟的小想法，还有游戏上的一些趣闻，偏私人、日常向，请各位访客老爷酌情观看，就酱。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;前排安利，本篇博文的名字来源于netflix于3月15日上映的动画短篇集 《 love，d
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="http://yoursite.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>回顾（重学）计算机网络TCP篇——三次握手四次挥手</title>
