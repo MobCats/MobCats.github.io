@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-22T15:07:39.680Z</updated>
+  <updated>2019-03-27T14:26:37.518Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于我想做数据可视化视频这件事</title>
+    <link href="http://yoursite.com/2019/03/25/pachong/"/>
+    <id>http://yoursite.com/2019/03/25/pachong/</id>
+    <published>2019-03-24T16:00:00.000Z</published>
+    <updated>2019-03-27T14:26:37.518Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="从数据可视化说起"><a href="#从数据可视化说起" class="headerlink" title="从数据可视化说起"></a>从数据可视化说起</h1><iframe src="//player.bilibili.com/player.html?aid=25247913&cid=42863375&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="450px" width="600px"> </iframe><p>hi，大家好啊！！不知道大家最近几个月的。。也不是几个月，蛮长时间了吧，从去年九月份以后，不管是b站还是其他什么其他的社交分享视频网站、app中，数据可视化的视频越来越多了，覆盖的范围也是越来越广，从编程语言排行到网易云歌手热度，从百度搜索指数到中国各大城市发展。可以说有数据的领域，就存在着数据可视化。这类视频的，其实是依靠着观众对数据的好奇心来吸引用户观看的。而且对于专业人士来说，从这些动态的数据中，更是可以分析出更多有价值的东西（貌似本身数据可视化就是为专业领域分析服务的嗯）</p><p>所有，对于还没火就已经凉凉还整天整天鸽的小up主，自然是想蹭一下热度，做一个自己比较熟悉也是比较感兴趣的 炉石传说 各职业胜率随时间（版本）变化的视频。那要怎么做呢？开始研究。。</p><h1 id="数据可视化框架"><a href="#数据可视化框架" class="headerlink" title="数据可视化框架"></a>数据可视化框架</h1><p>经过我的一番研究发现，这种数据可视化视频，主要分为两个部分</p><ol><li>前期的数据准备（收集足够数量的靠谱数据）</li><li>完成可视化，录制视频（画面表现、动画）</li></ol><p>假设我们已经完成前期的数据准备有了足够靠谱数据，要怎么进行第二步 可视化 呢？这里我们用到的 “b站数据可视化第一人” 见齐大大！！为我们准备的非常好用的可视化框架。（鼓掌！鼓掌！）<br>这里呢，我附上见齐大大的框架github地址，有兴趣的可以去了解一下，具体用法什么都有讲。<br><a href="https://github.com/Jannchie/Historical-ranking-data-visualization-based-on-d3.js" target="_blank" rel="noopener">https://github.com/Jannchie/Historical-ranking-data-visualization-based-on-d3.js</a><br>另附<br>见齐大大的bilibili的b站地址<br><a href="https://space.bilibili.com/1850091" target="_blank" rel="noopener">https://space.bilibili.com/1850091</a><br>最后再说一句 <strong>见齐大大牛逼！！</strong></p><h1 id="数据数据数据！"><a href="#数据数据数据！" class="headerlink" title="数据数据数据！"></a>数据数据数据！</h1><p>数据可视化，没有数据何谈可视化。<br>如何收集到最够数量且的数据呢？肯定要爬虫的，难道要手抄吗？不会爬虫怎么办，没事，我可以学。在依靠着当初兴起学的一点点python的基础的支持下，参考着案例与小甲鱼的python爬虫教程，写了个爬取 豆瓣top250 的案例。嗯~顿时觉得自己学会了爬虫（雾。那么，打开要怕爬取的网址<br><a href="http://lushi.163.com/bigdata/" target="_blank" rel="noopener">http://lushi.163.com/bigdata/</a></p><p><iframe src="http://lushi.163.com/bigdata/" width="800px" height="400px" frameborder="1" name="" scrolling="auto"><br></iframe><br>像模像样的分析Elements。<br><img src="https://pic.superbed.cn/item/5c9b877b3a213b0417389f6b" alt=""><br>svg。。svg是啥。。<br><img src="https://pic.superbed.cn/item/5c9b87973a213b041738a097" alt=""><br>嗯。。。<br>咋爬呢。。。源代码的不显示svg标签及其内部啊。。<br>谷歌、百度、svg爬虫，嗯嗯，svg用于反爬虫。。。<br>能爬吗？能，得搞，花时间成体系的搞。就没有什么现成方便的方法吗？<br>放弃？不！<br><img src="https://pic.superbed.cn/item/5c9b87ae3a213b041738a1e6" alt=""><br>首先我将这一大段li的ul放到了HBuilder里，改掉display。<br><img src="https://pic.superbed.cn/item/5c9b87cc3a213b041738a335" alt=""><br>运行一下，我们就会得到日期列表<br><img src="https://pic.superbed.cn/item/5c9b87de3a213b041738a3e0" alt=""><br>复制粘贴得到纯正的txt日期列表，nice。<br>至于胜率信息用类似的方法提前，也不是不行，就是很麻烦。<br>还是搞点靠谱的方法再来吧。。。。</p><p>待续。。。。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;从数据可视化说起&quot;&gt;&lt;a href=&quot;#从数据可视化说起&quot; class=&quot;headerlink&quot; title=&quot;从数据可视化说起&quot;&gt;&lt;/a&gt;从数据可视化说起&lt;/h1&gt;&lt;iframe src=&quot;//player.bilibili.com/player.html?ai
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
     <title>猫，游戏和八阿哥</title>
     <link href="http://yoursite.com/2019/03/22/%E7%8C%AB%EF%BC%8C%E6%B8%B8%E6%88%8F%EF%BC%8C%E5%85%AB%E9%98%BF%E5%93%A5/"/>
     <id>http://yoursite.com/2019/03/22/猫，游戏，八阿哥/</id>
     <published>2019-03-22T12:16:39.000Z</published>
-    <updated>2019-03-22T15:07:39.680Z</updated>
+    <updated>2019-03-23T14:45:31.721Z</updated>
     
-    <content type="html"><![CDATA[<p>本篇博文永远记录平时遇到一些不值得细说的bug，有点思路但不成熟的小想法，还有游戏上的一些趣闻，偏私人、日常向，请各位访客老爷酌情观看，就酱。</p><blockquote><p>前排安利，本篇博文的名字来源于netflix于3月15日上映的动画短篇集 《 love，death and robots 》，中文译名为 《爱，死亡和机器人》，豆瓣评分9.3（话说昨天还9.4），豆瓣简介 这部名为《爱，死亡和机器人》的动画短片合集由18部分组成，每部分时长5-15分钟。这些短片涵盖多种类型，包括科幻、奇幻、恐怖和喜剧；这些短片也将包含多种形式，包括传统2D和3DCGI短片。建议观看年龄为18+。 总之，好看就对了。</p></blockquote><h1 id="3-16-—-3-22"><a href="#3-16-—-3-22" class="headerlink" title="3.16 — 3.22"></a>3.16 — 3.22</h1><h2 id="奇怪的-sidebar"><a href="#奇怪的-sidebar" class="headerlink" title="奇怪的 sidebar"></a>奇怪的 sidebar</h2><p>八阿哥：hexo next主题，侧边栏添加几个元素后，侧边栏不能进行高度<br>自适应，而是变为滚轮滚动的滚动条状态。懒，不想改动主题框架。网上寻找类似问题，无果。查阅官方文档，无果。</p><p>解决：重装了最新的 next 主题。<br>可能是当初改主题样式的时候没好好看注释，不小心改了些啥，也可能是在第三方站点下载时，下载下来的主题本身就有问题。另外，官方文档果然时最靠谱的，很难找到解决方法的问题，一定要去读官方文档，仔细分析比对。</p><h2 id="Live2d-改不了模型"><a href="#Live2d-改不了模型" class="headerlink" title="Live2d 改不了模型"></a>Live2d 改不了模型</h2><p>八阿哥：Live2d 安装完插件配置完后，改不了模型， <code>npm install --save live2d-widget-model-koharu</code> 重新导入，配置文件<code>model.use</code> 键入包名 (<code>live2d-widget-model-koharu</code>)，手动导入mode文件，都没效果。而且在配置文件中更改看板娘的宽高，也没效果。</p><p>解决：Live2d的配置代码写在了deploy里面</p><p><img src="https://pic.superbed.cn/item/5c94f8dc3a213b0417e5b56a" alt="错误"></p><p>拿出来就好了。。。</p><p><img src="https://pic.superbed.cn/item/5c94f8983a213b0417e5b2ed" alt="正确"></p><p>[]: <a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">https://github.com/EYHN/hexo-helper-live2d</a>    “live2d Github链接”</p>]]></content>
+    <content type="html"><![CDATA[<p>本篇博文永远记录平时遇到一些不值得细说的bug，有点思路但不成熟的小想法，还有游戏上的一些趣闻，偏私人、日常向，请各位访客老爷酌情观看，就酱。</p><blockquote><p>前排安利，本篇博文的名字来源于netflix于3月15日上映的动画短篇集 《 love，death and robots 》，中文译名为 《爱，死亡和机器人》，豆瓣评分9.3（话说昨天还9.4），豆瓣简介 这部名为《爱，死亡和机器人》的动画短片合集由18部分组成，每部分时长5-15分钟。这些短片涵盖多种类型，包括科幻、奇幻、恐怖和喜剧；这些短片也将包含多种形式，包括传统2D和3DCGI短片。建议观看年龄为18+。 总之，好看就对了。</p></blockquote><h1 id="3-16-—-3-22"><a href="#3-16-—-3-22" class="headerlink" title="3.16 — 3.22"></a>3.16 — 3.22</h1><h2 id="奇怪的-sidebar"><a href="#奇怪的-sidebar" class="headerlink" title="奇怪的 sidebar"></a>奇怪的 sidebar</h2><p>八阿哥：hexo next主题，侧边栏添加几个元素后，侧边栏不能进行高度<br>自适应，而是变为滚轮滚动的滚动条状态。懒，不想改动主题框架。网上寻找类似问题，无果。查阅官方文档，无果。</p><p>解决：重装了最新的 next 主题。<br>可能是当初改主题样式的时候没好好看注释，不小心改了些啥，也可能是在第三方站点下载时，下载下来的主题本身就有问题。另外，官方文档果然时最靠谱的，很难找到解决方法的问题，一定要去读官方文档，仔细分析比对。</p><h2 id="Live2d-改不了模型"><a href="#Live2d-改不了模型" class="headerlink" title="Live2d 改不了模型"></a>Live2d 改不了模型</h2><p>八阿哥：Live2d 安装完插件配置完后，改不了模型， <code>npm install --save live2d-widget-model-koharu</code> 重新导入，配置文件<code>model.use</code> 键入包名 (<code>live2d-widget-model-koharu</code>)，手动导入mode文件，都没效果。而且在配置文件中更改看板娘的宽高，也没效果。</p><p>解决：Live2d的配置代码写在了deploy里面，而且缩进也不对。</p><p><img src="https://pic.superbed.cn/item/5c94f8dc3a213b0417e5b56a" alt="错误"></p><p>拿出来就好了。。。</p><p><img src="https://pic.superbed.cn/item/5c94f8983a213b0417e5b2ed" alt="正确"></p><p> <a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">https://github.com/EYHN/hexo-helper-live2d</a> </p>]]></content>
     
     <summary type="html">
     
