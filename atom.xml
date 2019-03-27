@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>MobCat&#39;s Blog</title>
   
-  <subtitle>低等猿类</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>MobCat</name>
+    <name>路人貓喵喵</name>
     
   </author>
   
