@@ -95,6 +95,31 @@
   </entry>
   
   <entry>
+    <title>Linux课程笔记(一)</title>
+    <link href="http://yoursite.com/2019/03/08/Linux%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/03/08/Linux课程笔记/</id>
+    <published>2019-03-07T16:00:00.000Z</published>
+    <updated>2019-03-28T07:25:19.550Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Linux的安装"><a href="#Linux的安装" class="headerlink" title="Linux的安装"></a>Linux的安装</h1><p>因教学原因，我们课堂上进行的Liunx系统操作都是在VMware虚拟机上进行的，所以本次安装也是基于VMware Workstation进行的。<br>本次安装采用的是VMware Workstation 14 pro、Liunx发行版 CentOS 1810。</p><p>在VMware首页选择创建新的虚拟机。<br><img src="https://pic.superbed.cn/item/5c9c730d3a213b041742bdf8" alt=""></p><p>典型安装，下一步。<br><img src="https://pic.superbed.cn/item/5c9c731e3a213b041742bf27" alt=""></p><p>选择 安装程序光盘映像文件，点击浏览找到自己下载的iso镜像文件，下一步。<br><img src="https://pic.superbed.cn/item/5c9c733e3a213b041742c0ba" alt=""></p><p>自定义虚拟机名称，选择路径，下一步。<br><img src="https://pic.superbed.cn/item/5c9c73823a213b041742c365" alt=""></p><p>选择虚拟机的磁盘大小，这里因为是演示，所以分了10G，平时使用推荐默认d的20G。虚拟磁盘默认多文件模式，不用更改。<br><img src="https://pic.superbed.cn/item/5c9c73903a213b041742c457" alt=""></p><p>确认信息，点击完成。<br><img src="https://pic.superbed.cn/item/5c9c739e3a213b041742c588" alt=""></p><p>Vmware会自动启动虚拟机开始安装，中间注意按照提示选中安装按下回车（貌似只要也有按次回车，注意一下）。<br><img src="https://pic.superbed.cn/item/5c9c73ac3a213b041742c67b" alt=""></p><p>选择语言，往下找，中文，简体中文，继续。<br><img src="https://pic.superbed.cn/item/5c9c73b83a213b041742c716" alt=""></p><p>安装信息摘要页面，注意，我们需要改一下需要 软件选择 选项，默认安装的是最小安装，没有图形化界面。<br><img src="https://pic.superbed.cn/item/5c9c73c63a213b041742c7d5" alt=""></p><p>点击 软件选择 ，在左侧列表中找到 GNOME桌面 选中，点击左上角完成，等待安装源加载。。</p><p><img src="https://pic.superbed.cn/item/5c9c73d83a213b041742c8a7" alt=""></p><p>加载好后点击一下安装位置，选择下安装位置，点击完成。<br><img src="https://pic.superbed.cn/item/5c9c73e73a213b041742c992" alt=""></p><p>都完成后点击开始安装，之后会出现设置ROOT密码 和 创建用户界面。点进去按照要求设置好ROOT密码 及 用户名称、密码，等待安装完成。<br><img src="https://pic.superbed.cn/item/5c9c73f43a213b041742ca41" alt=""></p><p>完成后点击右下角重启。<br><img src="https://pic.superbed.cn/item/5c9c751c3a213b041742d92b" alt=""></p><p>重启之后会进入一个接受许可证和连接网络的页面，点进去接受许可，选择网络连接。<br><img src="https://pic.superbed.cn/item/5c9c76293a213b041742e7b5" alt=""><br><img src="https://pic.superbed.cn/item/5c9c763a3a213b041742e89f" alt=""></p><p><img src="https://pic.superbed.cn/item/5c9c76793a213b041742eb9e" alt=""></p><p>出现这个页面之后，就代表着安装和配置就已经完成了，登陆之后就能正常使用了！</p><h1 id="Linux-常用的基本命令"><a href="#Linux-常用的基本命令" class="headerlink" title="Linux 常用的基本命令"></a>Linux 常用的基本命令</h1><p>待补充。。。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Linux的安装&quot;&gt;&lt;a href=&quot;#Linux的安装&quot; class=&quot;headerlink&quot; title=&quot;Linux的安装&quot;&gt;&lt;/a&gt;Linux的安装&lt;/h1&gt;&lt;p&gt;因教学原因，我们课堂上进行的Liunx系统操作都是在VMware虚拟机上进行的，所以本次安装
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Liunx" scheme="http://yoursite.com/tags/Liunx/"/>
+    
+  </entry>
+  
+  <entry>
     <title>小狗钱钱读书笔记——这居然是一本面向儿童的理财读物？！</title>
     <link href="http://yoursite.com/2019/03/04/%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%8B%97%E9%92%B1%E9%92%B1/"/>
     <id>http://yoursite.com/2019/03/04/笔记-小狗钱钱/</id>
