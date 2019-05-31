@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-30T07:25:13.584Z</updated>
+  <updated>2019-05-31T01:32:59.517Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Liunx课堂笔记(二)</title>
+    <link href="http://yoursite.com/2019/05/31/Liunx%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0-%E4%BA%8C/"/>
+    <id>http://yoursite.com/2019/05/31/Liunx课堂笔记-二/</id>
+    <published>2019-05-31T01:24:40.000Z</published>
+    <updated>2019-05-31T01:32:59.517Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Liunx文件不同颜色含义"><a href="#Liunx文件不同颜色含义" class="headerlink" title="Liunx文件不同颜色含义"></a>Liunx文件不同颜色含义</h2><blockquote><p><a href="https://blog.csdn.net/clozxy/article/details/5264211" target="_blank" rel="noopener">https://blog.csdn.net/clozxy/article/details/5264211</a></p></blockquote><div><br>            <p><strong><span style="color:#0000ff;">蓝色</span> </strong>代表目录；<br><strong><span style="color:#00ff00;">绿色</span> </strong>代表可执行文件；<br><strong><span style="color:#ff0000;">红色</span> &nbsp;</strong> 代表压缩文件；<br><strong><span style="color:#99ccff;">浅蓝色</span> &nbsp;</strong> 代表链接文件；<br><strong><span style="color:#c0c0c0;">灰色</span> &nbsp;</strong> 代表其他文件；<br><strong><span style="color:#ff0000;">红色</span> <span style="color:#ff9900;">闪烁</span> &nbsp;</strong> 代表链接的文件有问题了；</p><br><p><strong><span style="color:#ffff00;">黄色</span> &nbsp;</strong> 代表设备文件；</p><br><p><strong><span style="color:#ff00ff;"><span>粉红色 </span></span></strong>代表图片文件或是socket文件；</p><br><p><strong><span style="color:#99cc00;">青黄色</span> </strong>代表管道文件；</p><br><p>&nbsp;</p><br><p><strong><span style="color:#ffffff;"><span>褐色背景色</span> </span></strong>代表失效的链接文件；</p>          </div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Liunx文件不同颜色含义&quot;&gt;&lt;a href=&quot;#Liunx文件不同颜色含义&quot; class=&quot;headerlink&quot; title=&quot;Liunx文件不同颜色含义&quot;&gt;&lt;/a&gt;Liunx文件不同颜色含义&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Liunx" scheme="http://yoursite.com/tags/Liunx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>123</title>
+    <link href="http://yoursite.com/2019/04/29/123/"/>
+    <id>http://yoursite.com/2019/04/29/123/</id>
+    <published>2019-04-29T08:52:54.000Z</published>
+    <updated>2019-04-29T08:52:54.386Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>UTC</title>
+    <link href="http://yoursite.com/2019/04/10/UTC/"/>
+    <id>http://yoursite.com/2019/04/10/UTC/</id>
+    <published>2019-04-10T03:07:54.000Z</published>
+    <updated>2019-04-10T03:09:05.340Z</updated>
+    
+    <content type="html"><![CDATA[<p>UNIX timestamp (A.K.A. Unix’s epoch) means elapsed seconds since January 1st 1970 00:00:00 UTC (Universal Time). So , if you need the time in a specific TimeZone, you should convert it.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;UNIX timestamp (A.K.A. Unix’s epoch) means elapsed seconds since January 1st 1970 00:00:00 UTC (Universal Time). So , if you need the tim
+      
+    
+    </summary>
+    
+    
+      <category term="技术,疑问" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF-%E7%96%91%E9%97%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>大事情！换域名啦。</title>
